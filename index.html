@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SACI – Sistema de Avaliação da Qualidade dos Igarapés</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="light-mode">
+    <button id="modoEscuroBtn" onclick="alternarModo()"><i class="fas fa-moon"></i></button>
+
+    <!-- Map as background -->
+    <div id="mapaManaus"></div>
+
+    <!-- Search bar header -->
+    <div id="searchBar">
+        <div class="logo-mini">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Saci-perere.jpg/240px-Saci-perere.jpg"
+                alt="Logo SACI">
+            <h1>SACI</h1>
+        </div>
+        <div class="search-input">
+            <input type="text" id="bairro" list="bairros" placeholder="Pesquisar bairro...">
+            <button onclick="analisarBairro()"><i class="fas fa-search"></i></button>
+            <button onclick="localizarUsuario()"><i class="fas fa-crosshairs"></i></button>
+        </div>
+        <div class="header-actions">
+            <button id="menuToggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+
+    <!-- Side panel for information -->
+    <div id="sidePanel" class="closed">
+        <div class="panel-header">
+            <h2>Informações</h2>
+            <button onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="panel-content">
+            <div class="panel-section" id="aboutSection">
+                <h3>🌱 O que é o SACI?</h3>
+                <p>O <strong>SACI</strong> é um sistema de avaliação e monitoramento da qualidade dos igarapés urbanos,
+                    integrando dados ambientais e ações comunitárias.</p>
+                <button class="expand-btn" onclick="expandSection('aboutFull')">Mais informações</button>
+            </div>
+
+            <div class="panel-section" id="indicatorsSection">
+                <h3>🔍 Indicadores Avaliados</h3>
+                <div class="tags">
+                    <span class="tag">pH</span>
+                    <span class="tag">Oxigênio</span>
+                    <span class="tag">Temperatura</span>
+                </div>
+                <button class="expand-btn" onclick="expandSection('indicatorsFull')">Ver todos</button>
+            </div>
+
+            <div class="panel-section" id="resultado">
+                <!-- Results will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Expandable content sections -->
+    <div id="aboutFull" class="fullscreen-panel">
+        <div class="panel-header">
+            <h2>🌱 O que é o SACI?</h2>
+            <button onclick="closeSection('aboutFull')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="panel-content">
+            <p>O <strong>SACI</strong> é um sistema de avaliação e monitoramento da qualidade dos igarapés urbanos,
+                integrando dados ambientais, indicadores de saúde dos corpos hídricos e ações comunitárias. O nome
+                remete ao personagem do folclore brasileiro que representa astúcia, vigilância e presença nas matas —
+                aqui, adaptado como guardião digital dos nossos cursos d'água.</p>
+
+            <h3>🎯 Objetivos</h3>
+            <ul>
+                <li>Monitorar a qualidade da água dos igarapés urbanos com base em indicadores ambientais.</li>
+                <li>Engajar comunidades escolares e locais na proteção dos recursos hídricos.</li>
+                <li>Gerar relatórios acessíveis para tomada de decisão por gestores e sociedade civil.</li>
+                <li>Incorporar o conhecimento tradicional e científico para soluções sustentáveis.</li>
+            </ul>
+
+            <h3>📌 Público-Alvo</h3>
+            <p>O sistema é voltado para escolas, ONGs, universidades, órgãos ambientais e comunidades ribeirinhas
+                interessadas em participar ativamente da gestão das águas urbanas.</p>
+        </div>
+    </div>
+
+    <div id="indicatorsFull" class="fullscreen-panel">
+        <div class="panel-header">
+            <h2>🔍 Indicadores Avaliados</h2>
+            <button onclick="closeSection('indicatorsFull')"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="panel-content">
+            <div class="tags">
+                <span class="tag">Oxigênio Dissolvido</span>
+                <span class="tag">pH</span>
+                <span class="tag">Temperatura</span>
+                <span class="tag">Turbidez</span>
+                <span class="tag">Sólidos Totais</span>
+                <span class="tag">Coliformes Fecais</span>
+                <span class="tag">Demanda Bioquímica de Oxigênio</span>
+            </div>
+
+            <h3>Significado dos Indicadores</h3>
+            <ul>
+                <li><strong>pH:</strong> Mede a acidez da água. Valores ideais entre 6.5 e 8.5.</li>
+                <li><strong>Oxigênio Dissolvido:</strong> Essencial para vida aquática. Valores abaixo de 5mg/L são
+                    prejudiciais.</li>
+                <li><strong>Temperatura:</strong> Afeta diretamente a vida aquática e outros parâmetros.</li>
+                <!-- Add more indicator descriptions -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Dashboard panel -->
+    <div id="dashboard" class="fullscreen-panel escondido">
+        <div class="panel-header">
+            <h2>📊 Painel de Controle</h2>
+            <button onclick="fecharDashboard()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="panel-content">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="mostrarTab('tab-enviar')">Enviar Dados</button>
+                <button class="tab-btn" onclick="mostrarTab('tab-historico')">Histórico</button>
+                <button class="tab-btn" onclick="mostrarTab('tab-relatorios')">Relatórios</button>
+            </div>
+
+            <div id="tab-enviar" class="tab-content active">
+                <h3>Enviar Medição</h3>
+                <form id="formMedicao">
+                    <div class="form-group">
+                        <label for="bairroInput">Bairro:</label>
+                        <input type="text" id="bairroInput" list="bairros" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dataColeta">Data da Coleta:</label>
+                        <input type="date" id="dataColeta" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phInput">pH da Água (0-14):</label>
+                        <input type="number" id="phInput" min="0" max="14" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="oxigenioInput">Oxigênio Dissolvido (mg/L):</label>
+                        <input type="number" id="oxigenioInput" min="0" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="temperaturaInput">Temperatura (°C):</label>
+                        <input type="number" id="temperaturaInput" step="0.1" required>
+                    </div>
+
+                    <button type="button" onclick="enviarDadosIgarape()">Enviar Dados</button>
+                </form>
+            </div>
+
+            <div id="tab-historico" class="tab-content">
+                <h3>Histórico de Medições</h3>
+                <div id="listaMedicoes" class="medicoes-lista">
+                    <!-- Lista preenchida via JavaScript -->
+                </div>
+            </div>
+
+            <div id="tab-relatorios" class="tab-content">
+                <h3>Relatórios</h3>
+                <p>Selecione o tipo de relatório:</p>
+                <select id="tipoRelatorio">
+                    <option value="mensal">Mensal</option>
+                    <option value="bairro">Por Bairro</option>
+                    <option value="indicador">Por Indicador</option>
+                </select>
+                <button onclick="alert('Funcionalidade em desenvolvimento')">Gerar Relatório</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User management panels -->
+    <div id="inicio" class="auth-panel">
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Saci-perere.jpg/240px-Saci-perere.jpg"
+                alt="Logo SACI">
+            <h2>Bem-vindo ao SACI</h2>
+            <p>Sistema de Avaliação da Qualidade dos Igarapés</p>
+            <button onclick="abrirLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
+            <button onclick="abrirCadastro()"><i class="fas fa-user-plus"></i> Cadastro</button>
+            <button onclick="entrarComoVisitante()"><i class="fas fa-user"></i> Entrar como visitante</button>
+        </div>
+    </div>
+
+    <div id="telaLogin" class="auth-panel escondido">
+        <div>
+            <h2>Login</h2>
+            <input type="text" id="usuario" placeholder="Usuário">
+            <input type="password" id="senha" placeholder="Senha">
+            <button onclick="fazerLogin()">Entrar</button>
+            <p id="erroLogin" style="color: red;"></p>
+        </div>
+    </div>
+
+    <div id="modalCadastro" class="auth-panel escondido">
+        <div>
+            <h3>Cadastro</h3>
+            <input type="text" id="nomeCadastro" placeholder="Nome Completo">
+            <input type="email" id="emailCadastro" placeholder="E-mail">
+            <input type="password" id="senhaCadastro" placeholder="Senha">
+            <input type="password" id="confirmarSenhaCadastro" placeholder="Confirmar Senha">
+            <button onclick="realizarCadastro()">Cadastrar</button>
+            <p id="erroCadastro" style="color: red;"></p>
+        </div>
+    </div>
+
+    <div id="barraPerfil" class="user-bar escondido">
+        <span>👤 Visitante</span>
+        <div class="botoes">
+            <button onclick="abrirDashboard()"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+        </div>
+        <button onclick="location.reload()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </div>
+
+    <datalist id="bairros">
+        <option value="Centro">
+        <option value="Adrianópolis">
+        <option value="Alvorada">
+        <option value="Aparecida">
+        <option value="Cidade Nova">
+        <option value="Compensa">
+        <option value="Dom Pedro">
+        <option value="Japiim">
+        <option value="Ponta Negra">
+        <option value="Tarumã">
+    </datalist>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

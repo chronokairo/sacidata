@@ -1,0 +1,688 @@
+:root {
+    --cor-principal: #1e4d3a;
+    --cor-hover: #004d40;
+    --cor-botao-dark: #26a69a;
+    --fundo-light: #f4fdf8;
+    --fundo-dark: #121212;
+    --texto-light: #2b3e2f;
+    --texto-dark: #e0e0e0;
+    --panel-light: rgba(255, 255, 255, 0.95);
+    --panel-dark: rgba(30, 30, 30, 0.95);
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    transition: background-color 0.5s, color 0.5s;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.dark-mode {
+    color: var(--texto-dark);
+}
+
+.light-mode {
+    color: var(--texto-light);
+}
+
+header {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header img.logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+}
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.dark-mode section {
+    background: #1e1e1e;
+}
+
+h2 {
+    margin-top: 0;
+    color: var(--cor-principal);
+    font-size: 1.8em;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+a {
+    color: #1b755e;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: var(--cor-principal);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.subtitulo {
+    font-size: 1.2em;
+    color: #444;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #daf3e3;
+    color: #145c41;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-right: 8px;
+    font-size: 0.9em;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+input,
+button {
+    padding: 12px;
+    margin: 8px 0;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+button {
+    background-color: var(--cor-principal);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--cor-hover);
+    transform: scale(1.03);
+}
+
+.dark-mode button {
+    background-color: var(--cor-botao-dark);
+}
+
+#modoEscuroBtn {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    background: white;
+    color: var(--cor-principal);
+    border: none;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dark-mode #modoEscuroBtn {
+    background: #333;
+    color: #FFD700;
+}
+
+#inicio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#inicio>div {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 320px;
+}
+
+.dark-mode #inicio>div {
+    background: #2c2c2c;
+}
+
+#mapaManaus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#searchBar {
+    position: fixed;
+    bottom: 80px;
+    /* Changed from top: 16px to bottom: 80px */
+    left: 16px;
+    right: 16px;
+    max-width: 600px;
+    height: 50px;
+    background-color: var(--panel-light);
+    border-radius: 24px;
+    /* Increased border radius for modern look */
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    margin: 0 auto;
+}
+
+/* Add a subtle highlight effect to make the search bar stand out */
+#searchBar:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.dark-mode #searchBar {
+    background-color: var(--panel-dark);
+}
+
+.logo-mini {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.logo-mini img {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+}
+
+.logo-mini h1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cor-principal);
+    margin: 0;
+}
+
+.dark-mode .logo-mini h1 {
+    color: var(--cor-botao-dark);
+}
+
+.search-input {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.search-input input {
+    flex: 1;
+    height: 36px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 12px;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.search-input button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    color: var(--cor-principal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-input button:hover {
+    background-color: #f0f0f0;
+}
+
+.header-actions button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    color: var(--cor-principal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+#sidePanel {
+    position: fixed;
+    top: 80px;
+    left: 16px;
+    width: 350px;
+    max-height: calc(100vh - 100px);
+    background-color: var(--panel-light);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.dark-mode #sidePanel {
+    background-color: var(--panel-dark);
+}
+
+#sidePanel.closed {
+    transform: translateX(-370px);
+}
+
+.panel-header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dark-mode .panel-header {
+    border-bottom: 1px solid #333;
+}
+
+.panel-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--cor-principal);
+}
+
+.dark-mode .panel-header h2 {
+    color: var(--cor-botao-dark);
+}
+
+.panel-header button {
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.panel-header button:hover {
+    background-color: #f0f0f0;
+}
+
+.dark-mode .panel-header button:hover {
+    background-color: #333;
+}
+
+.panel-content {
+    padding: 16px;
+}
+
+.panel-section {
+    margin-bottom: 24px;
+}
+
+.panel-section h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--cor-principal);
+}
+
+.dark-mode .panel-section h3 {
+    color: var(--cor-botao-dark);
+}
+
+.expand-btn {
+    border: none;
+    background-color: transparent;
+    color: var(--cor-principal);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 4px 0;
+    font-size: 14px;
+}
+
+.dark-mode .expand-btn {
+    color: var(--cor-botao-dark);
+}
+
+.fullscreen-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--panel-light);
+    z-index: 1001;
+    overflow-y: auto;
+    display: none;
+}
+
+.dark-mode .fullscreen-panel {
+    background-color: var(--panel-dark);
+}
+
+.auth-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.auth-panel>div {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 320px;
+}
+
+.dark-mode .auth-panel>div {
+    background: #2c2c2c;
+}
+
+.user-bar {
+    position: fixed;
+    bottom: 24px;
+    /* Make the position consistent with search bar */
+    right: 16px;
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    gap: 10px;
+}
+
+.user-bar button {
+    background: white;
+    color: var(--cor-principal);
+    border: none;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#telaLogin,
+#modalCadastro {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#telaLogin.show,
+#modalCadastro.show {
+    display: flex;
+    opacity: 1;
+}
+
+#telaLogin>div,
+#modalCadastro>div {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 320px;
+}
+
+.dark-mode #telaLogin>div,
+.dark-mode #modalCadastro>div {
+    background: #2c2c2c;
+}
+
+#barraPerfil {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10000;
+}
+
+#barraPerfil .botoes {
+    display: flex;
+    gap: 10px;
+}
+
+#barraPerfil button {
+    background: white;
+    color: var(--cor-principal);
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    width: auto;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--texto-light);
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    width: auto;
+}
+
+.dark-mode .tab-btn {
+    color: var(--texto-dark);
+}
+
+.tab-btn.active {
+    color: var(--cor-principal);
+    border-bottom: 3px solid var(--cor-principal);
+}
+
+.dark-mode .tab-btn.active {
+    color: var(--cor-botao-dark);
+    border-bottom: 3px solid var(--cor-botao-dark);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    background-color: var(--cor-principal);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: var(--cor-hover);
+}
+
+.dark-mode button {
+    background-color: var(--cor-botao-dark);
+}
+
+.escondido {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    #sidePanel {
+        width: 280px;
+    }
+
+    #searchBar {
+        bottom: 70px;
+        left: 8px;
+        right: 8px;
+    }
+
+    .user-bar {
+        bottom: 16px;
+        right: 8px;
+    }
+
+    #modoEscuroBtn {
+        bottom: 16px;
+        left: 8px;
+    }
+
+    .logo-mini {
+        display: none;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+    }
+
+    .tab-btn.active {
+        border-bottom: none;
+        border-left: 3px solid var(--cor-principal);
+    }
+}
+
+.medicoes-lista {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.medicao-item {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s;
+}
+
+.dark-mode .medicao-item {
+    background-color: rgba(50, 50, 50, 0.7);
+    border-color: #444;
+}
+
+.medicao-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
