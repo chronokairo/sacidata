@@ -13,10 +13,8 @@
 <body class="light-mode">
     <button id="modoEscuroBtn" onclick="alternarModo()"><i class="fas fa-moon"></i></button>
 
-    <!-- Map as background -->
     <div id="mapaManaus"></div>
 
-    <!-- Search bar header -->
     <div id="searchBar">
         <div class="logo-mini">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Saci-perere.jpg/240px-Saci-perere.jpg"
@@ -33,7 +31,6 @@
         </div>
     </div>
 
-    <!-- Side panel for information -->
     <div id="sidePanel" class="closed">
         <div class="panel-header">
             <h2>Informações</h2>
@@ -57,13 +54,10 @@
                 <button class="expand-btn" onclick="expandSection('indicatorsFull')">Ver todos</button>
             </div>
 
-            <div class="panel-section" id="resultado">
-                <!-- Results will appear here -->
-            </div>
+            <div class="panel-section" id="resultado"></div>
         </div>
     </div>
 
-    <!-- Expandable content sections -->
     <div id="aboutFull" class="fullscreen-panel">
         <div class="panel-header">
             <h2>🌱 O que é o SACI?</h2>
@@ -71,21 +65,7 @@
         </div>
         <div class="panel-content">
             <p>O <strong>SACI</strong> é um sistema de avaliação e monitoramento da qualidade dos igarapés urbanos,
-                integrando dados ambientais, indicadores de saúde dos corpos hídricos e ações comunitárias. O nome
-                remete ao personagem do folclore brasileiro que representa astúcia, vigilância e presença nas matas —
-                aqui, adaptado como guardião digital dos nossos cursos d'água.</p>
-
-            <h3>🎯 Objetivos</h3>
-            <ul>
-                <li>Monitorar a qualidade da água dos igarapés urbanos com base em indicadores ambientais.</li>
-                <li>Engajar comunidades escolares e locais na proteção dos recursos hídricos.</li>
-                <li>Gerar relatórios acessíveis para tomada de decisão por gestores e sociedade civil.</li>
-                <li>Incorporar o conhecimento tradicional e científico para soluções sustentáveis.</li>
-            </ul>
-
-            <h3>📌 Público-Alvo</h3>
-            <p>O sistema é voltado para escolas, ONGs, universidades, órgãos ambientais e comunidades ribeirinhas
-                interessadas em participar ativamente da gestão das águas urbanas.</p>
+                integrando dados ambientais, indicadores de saúde dos corpos hídricos e ações comunitárias.</p>
         </div>
     </div>
 
@@ -100,23 +80,10 @@
                 <span class="tag">pH</span>
                 <span class="tag">Temperatura</span>
                 <span class="tag">Turbidez</span>
-                <span class="tag">Sólidos Totais</span>
-                <span class="tag">Coliformes Fecais</span>
-                <span class="tag">Demanda Bioquímica de Oxigênio</span>
             </div>
-
-            <h3>Significado dos Indicadores</h3>
-            <ul>
-                <li><strong>pH:</strong> Mede a acidez da água. Valores ideais entre 6.5 e 8.5.</li>
-                <li><strong>Oxigênio Dissolvido:</strong> Essencial para vida aquática. Valores abaixo de 5mg/L são
-                    prejudiciais.</li>
-                <li><strong>Temperatura:</strong> Afeta diretamente a vida aquática e outros parâmetros.</li>
-                <!-- Add more indicator descriptions -->
-            </ul>
         </div>
     </div>
 
-    <!-- Dashboard panel -->
     <div id="dashboard" class="fullscreen-panel escondido">
         <div class="panel-header">
             <h2>📊 Painel de Controle</h2>
@@ -136,36 +103,29 @@
                         <label for="bairroInput">Bairro:</label>
                         <input type="text" id="bairroInput" list="bairros" required>
                     </div>
-
                     <div class="form-group">
                         <label for="dataColeta">Data da Coleta:</label>
                         <input type="date" id="dataColeta" required>
                     </div>
-
                     <div class="form-group">
                         <label for="phInput">pH da Água (0-14):</label>
                         <input type="number" id="phInput" min="0" max="14" step="0.1" required>
                     </div>
-
                     <div class="form-group">
                         <label for="oxigenioInput">Oxigênio Dissolvido (mg/L):</label>
                         <input type="number" id="oxigenioInput" min="0" step="0.1" required>
                     </div>
-
                     <div class="form-group">
                         <label for="temperaturaInput">Temperatura (°C):</label>
                         <input type="number" id="temperaturaInput" step="0.1" required>
                     </div>
-
                     <button type="button" onclick="enviarDadosIgarape()">Enviar Dados</button>
                 </form>
             </div>
 
             <div id="tab-historico" class="tab-content">
                 <h3>Histórico de Medições</h3>
-                <div id="listaMedicoes" class="medicoes-lista">
-                    <!-- Lista preenchida via JavaScript -->
-                </div>
+                <div id="listaMedicoes" class="medicoes-lista"></div>
             </div>
 
             <div id="tab-relatorios" class="tab-content">
@@ -181,7 +141,6 @@
         </div>
     </div>
 
-    <!-- User management panels -->
     <div id="inicio" class="auth-panel">
         <div>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Saci-perere.jpg/240px-Saci-perere.jpg"
@@ -238,6 +197,7 @@
     </datalist>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 
