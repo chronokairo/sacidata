@@ -1,11 +1,6 @@
-// src/services/api.js
-// Integração com API backend (mock)
-
 export async function fetchData() {
-  // Simulação de chamada à API
-  return Promise.resolve([
-    { id: 1, name: 'Igarapé 1', value: 'Bom' },
-    { id: 2, name: 'Igarapé 2', value: 'Regular' },
-    { id: 3, name: 'Igarapé 3', value: 'Ruim' }
-  ]);
+  // Usa fetch para permitir mocks nos testes
+  const res = await fetch('/api/data');
+  if (!res.ok) throw new Error('Erro ao buscar dados');
+  return res.json();
 }
