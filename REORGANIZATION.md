@@ -1,102 +1,100 @@
-# Reorganização de Arquivos do Projeto Sacidata
+# Reorganização do Projeto SACIData
 
-## Padrão Escolhido
+## Design Pattern Escolhido
+Após análise da stack e estrutura existente, foi decidido adotar o padrão **Modular**. Esse padrão é adequado devido à separação clara de responsabilidades e à necessidade de manter o projeto escalável e organizado.
 
-O padrão de organização adotado para este projeto é o **MVC (Model-View-Controller)**, conforme já identificado na estrutura existente. Este padrão é adequado devido à separação clara entre responsabilidades no backend e frontend, além de ser amplamente utilizado em projetos com Node.js e React.js.
-
-## Estrutura Antes
-
+## Estrutura Anterior
 ```
-/
-|-- backend/
-|   |-- controllers/
-|   |-- models/
-|   |-- routes/
-|   |-- services/
-|   |-- tests/
-|   |-- app.js
-|   |-- server.js
-|
-|-- frontend/
-|   |-- src/
-|       |-- components/
-|       |-- pages/
-|       |-- state/
-|       |-- api/
-|       |-- tests/
-|       |-- index.js
-|
-|-- docs/
-|   |-- (alguns arquivos .md já estavam aqui)
-|
-|-- scripts/
-|-- Dockerfile
-|-- (vários arquivos .md soltos na raiz)
+backend/
+controllers/
+docs/
+frontend/
+scripts/
+src/
+tests/
+BUG_FIXES_GUIDE.md
+config.js
+docker-compose.yml
+Dockerfile
+EMERGENCY_FIX.md
+FINAL_CODE_REVIEW_DECISION.md
+FINAL_CODE_REVIEW.md
+jest.config.js
+LICENSE
+package.json
+PIPELINE_CE6C7B8C.md
+QA_BUG_REPORT_DETAILED.md
+QA_COVERAGE_REPORT.md
+QA_TEST_REPORT.md
+README.md
+REORGANIZATION.md
+requirements_and_backlog_emergencial.md
+requirements_and_backlog_git_commit.md
+requirements_and_backlog_sacidata_pipeline.md
+requirements_and_backlog_sacidata.md
+requirements_and_backlog.md
+run_qa_tests.sh
+run_tests.sh
+server.js
+technical_architecture_git_commit.md
+technical_architecture_sacidata.md
+technical_architecture.md
+todo.md
 ```
 
-## Estrutura Após
-
+## Estrutura Atualizada
 ```
-/
-|-- backend/
-|   |-- controllers/
-|   |-- models/
-|   |-- routes/
-|   |-- services/
-|   |-- tests/
-|   |-- app.js
-|   |-- server.js
-|
-|-- frontend/
-|   |-- src/
-|       |-- components/
-|       |-- pages/
-|       |-- state/
-|       |-- api/
-|       |-- tests/
-|       |-- index.js
-|
-|-- docs/
-|   |-- BUG_FIXES_GUIDE.md
-|   |-- EMERGENCY_FIX.md
-|   |-- FINAL_CODE_REVIEW_DECISION.md
-|   |-- FINAL_CODE_REVIEW.md
-|   |-- PIPELINE_CE6C7B8C.md
-|   |-- QA_BUG_REPORT_DETAILED.md
-|   |-- QA_COVERAGE_REPORT.md
-|   |-- QA_TEST_REPORT.md
-|   |-- README.md
-|   |-- REORGANIZATION.md
-|   |-- requirements_and_backlog_emergencial.md
-|   |-- requirements_and_backlog_git_commit.md
-|   |-- requirements_and_backlog.md
-|   |-- technical_architecture_git_commit.md
-|   |-- technical_architecture_sacidata.md
-|   |-- technical_architecture.md
-|   |-- todo.md
-|
-|-- scripts/
-|-- Dockerfile
+config/
+  config.js
+  jest.config.js
+  docker-compose.yml
+  Dockerfile
+
+src/
+  app/
+    controllers/
+    services/
+    models/
+  scripts/
+    move-md-to-docs.js
+    validate.js
+  server.js
+
+docs/
+  (todos os arquivos .md movidos para cá)
+
+tests/
+  unit/
+  integration/
+
+scripts/
+  README.md
+
+package.json
+README.md
+LICENSE
 ```
 
 ## Mudanças Realizadas
+1. **Organização de Configurações**:
+   - Arquivos de configuração (`config.js`, `jest.config.js`, `docker-compose.yml`, `Dockerfile`) movidos para a pasta `config/`.
 
-1. **Movimentação de Arquivos `.md`:**
-   - Todos os arquivos `.md` que estavam na raiz foram movidos para a pasta `docs/`.
+2. **Centralização do Código-Fonte**:
+   - Todo o código principal foi movido para `src/`.
+   - Scripts específicos foram movidos para `src/scripts/`.
 
-2. **Atualização de Referências:**
-   - Não foram identificadas referências internas entre os arquivos `.md` que necessitassem de atualização.
+3. **Documentação**:
+   - Todos os arquivos `.md` foram movidos para a pasta `docs/`.
 
-3. **Criação de Estrutura Padrão:**
-   - A estrutura existente já estava bem organizada, seguindo o padrão MVC. Apenas ajustes menores foram necessários.
+4. **Testes**:
+   - Testes unitários e de integração organizados em `tests/unit/` e `tests/integration/`.
 
-## Validação
+5. **Correção de Imports**:
+   - Todos os imports/requires foram atualizados para refletir a nova estrutura.
 
-- Todos os arquivos `.md` estão agora centralizados na pasta `docs/`.
-- A estrutura do projeto permanece consistente com o padrão MVC.
-- Não há arquivos `.md` soltos na raiz ou em locais inadequados.
+6. **Remoção de Arquivos Soltos**:
+   - Arquivos desorganizados na raiz foram movidos para suas respectivas pastas.
 
----
-
-Responsável: Organizer — ThinkCoffee
-Data: 2024-06-13
+## Próximos Passos
+- Validar a execução do projeto com a nova estrutura.
+- Atualizar a documentação de desenvolvimento no `README.md`.
