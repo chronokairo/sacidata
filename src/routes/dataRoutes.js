@@ -1,8 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const dataController = require('../controllers/dataController');
 
-router.get('/', dataController.getData);
-router.post('/', dataController.createData);
+const router = express.Router();
+
+router.get('/data', dataController.getData);
 
 module.exports = router;
