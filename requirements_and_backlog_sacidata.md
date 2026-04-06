@@ -1,45 +1,37 @@
-# Requisitos, Critérios de Aceite e Backlog — Projeto sacidata
+# Requisitos e Backlog Prioritário — Projeto sacidata
 
 ## Objetivo
-Reorganizar os arquivos da raiz do projeto para uma estrutura profissional, facilitando manutenção, testes e evolução.
+Reorganizar todos os arquivos `.md` do workspace para a pasta `docs`, centralizando a documentação.
 
 ---
 
 ## Requisitos
 
-### R1. Padronizar Estrutura de Pastas
-- Consolidar arquivos por domínio (ex: controllers, models, routes, services, components, pages, state, api).
-- Separar claramente frontend e backend.
-- Garantir que arquivos de configuração fiquem em local único e padronizado.
-
-### R2. Facilitar Testes e Deploy
-- Pastas de testes separadas por tipo (unitário, integração).
-- Scripts de build e testes acessíveis na raiz.
-
-### R3. Documentação
-- Documentar a nova estrutura e regras de organização.
+1. **Identificar todos os arquivos `.md` existentes no workspace, em qualquer nível de subdiretório.**
+2. **Criar a pasta `docs` na raiz do projeto, caso não exista.**
+3. **Mover todos os arquivos `.md` para a pasta `docs`, mantendo apenas o nome do arquivo (sem subpastas).**
+4. **Atualizar eventuais referências internas entre arquivos `.md` para refletir o novo caminho, se necessário.**
+5. **Garantir que nenhum arquivo `.md` permaneça fora da pasta `docs` após a execução do pipeline.**
 
 ---
 
 ## Critérios de Aceite
 
-- [ ] Todos arquivos estejam em pastas padronizadas conforme domínio.
-- [ ] Não existam arquivos duplicados ou órfãos.
-- [ ] Testes unitários e de integração estejam em suas respectivas pastas.
-- [ ] Documentação da estrutura esteja atualizada.
-- [ ] Scripts de build/test funcionam após reorganização.
+- Todos os arquivos `.md` do projeto estão presentes apenas na pasta `docs`.
+- Não existem arquivos `.md` fora da pasta `docs`.
+- A pasta `docs` contém todos os arquivos `.md` previamente existentes, sem perda de conteúdo.
+- Referências internas entre arquivos `.md` funcionam normalmente (se houver).
 
 ---
 
 ## Backlog Priorizado
 
-1. Mapear estrutura atual do projeto
-2. Definir estrutura alvo (proposta de reorganização)
-3. Mover arquivos para estrutura alvo
-4. Atualizar imports/referências internas
-5. Ajustar scripts de build/test
-6. Atualizar documentação
-7. Revisar e validar critérios de aceite
+1. **Mapear todos os arquivos `.md` do workspace.**
+2. **Criar a pasta `docs` na raiz, se necessário.**
+3. **Mover todos os arquivos `.md` para a pasta `docs`.**
+4. **Atualizar referências internas entre arquivos `.md` (se aplicável).**
+5. **Remover arquivos `.md` das localizações antigas.**
+6. **Testar e validar a reorganização.**
 
 ---
 
