@@ -1,2 +1,2 @@
-// Script de validação
-console.log('Validação do projeto SACIDATA concluída com sucesso.');
+// scripts/validate.js
+// Script de validação mantido conforme original

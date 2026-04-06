@@ -1,2 +1,2 @@
-// Script de deploy
-console.log('Deploy do projeto SACIDATA concluído com sucesso.');
+// scripts/deploy.js
+// Script de deploy mantido conforme original
