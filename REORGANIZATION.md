@@ -1,4 +1,4 @@
-# Reorganização do Projeto
+# Reorganização do Projeto sacidata
 
 ## Padrão Escolhido
 - MVC (Model-View-Controller)
@@ -15,8 +15,8 @@
   - models/
   - routes/
   - services/
-  - tests/
   - views/
+  - tests/
 
 ## Lista de Mudanças
 - Arquivos movidos para suas respectivas pastas de acordo com o padrão MVC.

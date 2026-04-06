@@ -1,7 +1,7 @@
-# Requisitos e Backlog Prioritário — Projeto sacidata
+# Requisitos, Critérios de Aceite e Backlog — Projeto sacidata
 
 ## Objetivo
-Reorganizar os arquivos do projeto para melhorar a estrutura, facilitar manutenção, testes e evolução.
+Reorganizar os arquivos da raiz do projeto para uma estrutura profissional, facilitando manutenção, testes e evolução.
 
 ---
 
@@ -33,19 +33,13 @@ Reorganizar os arquivos do projeto para melhorar a estrutura, facilitar manuten�
 
 ## Backlog Priorizado
 
-1. **Mapear estrutura atual do projeto**
-2. **Definir estrutura alvo (proposta de reorganização)**
-3. **Mover arquivos para estrutura alvo**
-4. **Atualizar imports/referências internas**
-5. **Ajustar scripts de build/test**
-6. **Atualizar documentação**
-7. **Revisar e validar critérios de aceite**
-
----
-
-## Observações
-- Mudanças devem ser incrementais e validadas por testes automatizados.
-- Toda alteração relevante deve ser documentada.
+1. Mapear estrutura atual do projeto
+2. Definir estrutura alvo (proposta de reorganização)
+3. Mover arquivos para estrutura alvo
+4. Atualizar imports/referências internas
+5. Ajustar scripts de build/test
+6. Atualizar documentação
+7. Revisar e validar critérios de aceite
 
 ---
 

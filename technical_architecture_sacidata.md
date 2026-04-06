@@ -1,54 +1,92 @@
-# Arquitetura Técnica e Organização do Projeto Sacidata
+# Arquitetura e Estrutura de Pastas do Projeto Sacidata
 
 ## Stack Tecnológica
-- **Backend**: Node.js com Express.js
+
 - **Frontend**: React.js
+- **Backend**: Node.js com Express
 - **Banco de Dados**: MongoDB
-- **Testes**: Jest para testes unitários e integração
+- **Testes**: Jest para testes unitários e Cypress para testes end-to-end
 - **Containerização**: Docker
+- **CI/CD**: GitHub Actions
 
 ## Estrutura de Pastas
-Abaixo está a estrutura de pastas proposta para o projeto:
+
+A estrutura proposta segue o padrão MVC (Model-View-Controller) com separação clara entre frontend e backend:
 
 ```
 /
 |-- backend/
-|   |-- controllers/       # Lógica de controle
-|   |-- models/            # Modelos de dados
-|   |-- routes/            # Definição de rotas
-|   |-- services/          # Serviços e lógica de negócios
-|   |-- tests/             # Testes unitários e de integração
-|   |-- server.js          # Configuração do servidor
+|   |-- controllers/
+|   |-- models/
+|   |-- routes/
+|   |-- services/
+|   |-- tests/
+|   |-- app.js
+|   |-- server.js
 |
 |-- frontend/
-|   |-- components/        # Componentes React
-|   |-- pages/             # Páginas React
-|   |-- services/          # Comunicação com APIs
-|   |-- state/             # Gerenciamento de estado
-|   |-- tests/             # Testes de componentes e integração
-|   |-- main.js            # Ponto de entrada do frontend
+|   |-- src/
+|       |-- components/
+|       |-- pages/
+|       |-- state/
+|       |-- api/
+|       |-- tests/
+|       |-- index.js
 |
-|-- config/                # Arquivos de configuração
-|-- public/                # Arquivos estáticos
-|-- scripts/               # Scripts utilitários
-|-- tests/                 # Testes globais
-|-- docker-compose.yml     # Configuração do Docker Compose
-|-- Dockerfile             # Configuração do Docker
-|-- package.json           # Dependências do projeto
-|-- README.md              # Documentação principal
+|-- config/
+|   |-- default.json
+|   |-- production.json
+|   |-- development.json
+|
+|-- scripts/
+|-- Dockerfile
+|-- docker-compose.yml
+|-- README.md
+|-- package.json
+|-- .env
+|-- .env.example
 ```
 
-## Padrões de Organização
-1. **Modularidade**: Cada módulo (ex.: backend, frontend) deve ser autossuficiente e conter suas próprias dependências e testes.
-2. **Nomenclatura**: Usar nomes descritivos e consistentes para arquivos e pastas.
-3. **Testes**: Manter testes próximos ao código que testam, mas também ter uma pasta global para testes integrados.
-4. **Configuração**: Centralizar configurações em uma pasta `config/`.
+## Detalhamento das Pastas
 
-## Próximos Passos
-1. Reorganizar os arquivos existentes para seguir a estrutura proposta.
-2. Atualizar os scripts de build e execução para refletir a nova organização.
-3. Garantir que todos os testes estejam funcionando após a reorganização.
+### Backend
+- **controllers/**: Contém a lógica de controle, manipulando as requisições e respostas.
+- **models/**: Define os esquemas e modelos do banco de dados.
+- **routes/**: Define as rotas da API.
+- **services/**: Contém a lógica de negócios e integração com outros serviços.
+- **tests/**: Testes unitários e de integração para o backend.
+- **app.js**: Configuração principal do aplicativo Express.
+- **server.js**: Inicialização do servidor.
+
+### Frontend
+- **components/**: Componentes reutilizáveis da interface.
+- **pages/**: Páginas principais da aplicação.
+- **state/**: Gerenciamento de estado (ex: Redux, Context API).
+- **api/**: Configuração de chamadas à API.
+- **tests/**: Testes unitários e de integração para o frontend.
+- **index.js**: Ponto de entrada da aplicação React.
+
+### Config
+- Arquivos de configuração para diferentes ambientes (desenvolvimento, produção, etc).
+
+### Scripts
+- Scripts utilitários para automação de tarefas.
+
+## Padrões de Organização
+
+1. **Nomenclatura**:
+   - Pastas e arquivos em `kebab-case`.
+   - Classes e componentes em `PascalCase`.
+
+2. **Modularização**:
+   - Cada módulo deve ser autocontido, com seus próprios testes.
+
+3. **Configuração**:
+   - Variáveis de ambiente centralizadas em `.env`.
+
+4. **Testes**:
+   - Testes devem ser organizados na mesma estrutura dos arquivos de código.
 
 ---
 
-Este documento deve ser usado como referência para a reorganização do projeto Sacidata.
+Essa estrutura visa facilitar a manutenção, escalabilidade e colaboração no projeto.
