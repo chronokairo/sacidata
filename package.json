@@ -16,7 +16,8 @@
     "test:integration": "jest tests/integration",
     "test:coverage": "jest --coverage",
     "docker:build": "docker build -t sacidata:local .",
-    "docker:up": "docker compose up --build"
+    "docker:up": "docker compose up --build",
+    "move-md": "node scripts/move-md-to-docs.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
